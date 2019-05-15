@@ -88,7 +88,7 @@ module.exports = {
             throw new Error('Invalid environment ' + encodeURIComponent(env));
         }
         if (env == module.exports.SANDBOX) {
-            return util.format('https://www.sandbox.paypal.com/webapps/auth/protocol/openidconnect/v1/authorize?response_type=code&client_id=%s&scope=%s&redirect_uri=%s&state=%s',
+            return util.format('https://www.sandbox.paypal.com/signin/authorize?response_type=code&client_id=%s&scope=%s&redirect_uri=%s&state=%s',
                 encodeURIComponent(cfg.clientId), encodeURIComponent(cfg.scopes), encodeURIComponent(cfg.returnUrl),
                 encodeURIComponent(JSON.stringify([env,finalUrl,!!returnTokenOnQueryString])));
         } else if (env.indexOf('stage2') === 0) {
@@ -96,7 +96,7 @@ module.exports = {
                 env, encodeURIComponent(cfg.clientId), encodeURIComponent(cfg.scopes), encodeURIComponent(cfg.returnUrl),
                 encodeURIComponent(JSON.stringify([env,finalUrl,!!returnTokenOnQueryString])));
         } else {
-            return util.format('https://www.paypal.com/webapps/auth/protocol/openidconnect/v1/authorize?response_type=code&client_id=%s&scope=%s&redirect_uri=%s&state=%s',
+            return util.format('https://www.paypal.com/signin/authorize?response_type=code&client_id=%s&scope=%s&redirect_uri=%s&state=%s',
                 encodeURIComponent(cfg.clientId), encodeURIComponent(cfg.scopes), encodeURIComponent(cfg.returnUrl),
                 encodeURIComponent(JSON.stringify([env,finalUrl,!!returnTokenOnQueryString])));
         }
